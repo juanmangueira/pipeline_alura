@@ -17,7 +17,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Inicializar repositório
 - [x] Criar README
 - [x] Atualizar README
-- [ ] Importar dados brutos
+- [x] Importar dados brutos
 - [ ] Processar dados brutos
 - [ ] Analisar dados processados
 - [ ] Criar pipeline para scripts

@@ -14,12 +14,9 @@ def coleta_dados():
     
     return dados_empresaA, dados_empresaB
 
-def main():
-    dados_empresaA, dados_empresaB = coleta_dados()
-    colunas_empresaA = list(dados_empresaA[0].keys())
-    colunas_empresaB = list(dados_empresaB[0].keys())
-    print(colunas_empresaA)
-    print(colunas_empresaB)
+def processa_dados(dados_1:dict, dados_2:dict):
+    dados_empresaA = dados_1
+    dados_empresaB = dados_2
 
     key_mapping = {'Nome do Item':'Nome do Produto', 
                    'Classificação do Produto':'Categoria do Produto', 
@@ -36,8 +33,14 @@ def main():
             dict_temp[key_mapping[key_old]] = value
         new_dados_empresaB.append(dict_temp)
     
-    dados_empresas = []
-    dados_empresas.extend(dados_empresaA)
-    dados_empresas.extend(new_dados_empresaB)
+    dados_agrupados = []
+    dados_agrupados.extend(dados_empresaA)
+    dados_agrupados.extend(new_dados_empresaB)
+    return dados_agrupados
+
+def main():
+    dados_empresaA, dados_empresaB = coleta_dados()
+    dados_agrupados = processa_dados(dados_empresaA, dados_empresaB)
+
 
 main()

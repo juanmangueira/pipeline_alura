@@ -41,6 +41,12 @@ def processa_dados(dados_1:dict, dados_2:dict):
 def main():
     dados_empresaA, dados_empresaB = coleta_dados()
     dados_agrupados = processa_dados(dados_empresaA, dados_empresaB)
-
-
+    colunas = list(dados_agrupados[-1].keys())
+    print(colunas)
+    path = './data_processed/'
+    with open(path+'dados_empresas.csv','w') as file:
+        writer = csv.DictWriter(file, fieldnames=colunas)
+        writer.writeheader()
+        for row in dados_agrupados:
+            writer.writerow(row)
 main()

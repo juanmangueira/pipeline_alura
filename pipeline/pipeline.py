@@ -15,8 +15,6 @@ def coleta_dados():
     return dados_empresaA, dados_empresaB
 
 def processa_dados(dados_1:dict, dados_2:dict):
-    dados_empresaA = dados_1
-    dados_empresaB = dados_2
 
     key_mapping = {'Nome do Item':'Nome do Produto', 
                    'Classificação do Produto':'Categoria do Produto', 
@@ -25,28 +23,31 @@ def processa_dados(dados_1:dict, dados_2:dict):
                    'Nome da Loja':'Filial', 
                    'Data da Venda':'Data da Venda'}
     
-    new_dados_empresaB = []
+    new_dados_2 = []
     
-    for dict_old in dados_empresaB:
+    for dict_old in dados_2:
         dict_temp = {}
         for key_old, value in dict_old.items():
             dict_temp[key_mapping[key_old]] = value
-        new_dados_empresaB.append(dict_temp)
+        dados_2.append(dict_temp)
     
     dados_agrupados = []
-    dados_agrupados.extend(dados_empresaA)
-    dados_agrupados.extend(new_dados_empresaB)
+    dados_agrupados.extend(dados_1)
+    dados_agrupados.extend(new_dados_2)
     return dados_agrupados
 
-def main():
-    dados_empresaA, dados_empresaB = coleta_dados()
-    dados_agrupados = processa_dados(dados_empresaA, dados_empresaB)
-    colunas = list(dados_agrupados[-1].keys())
-    print(colunas)
+def salva_dados(dados):
+    colunas = list(dados[-1].keys())
+    
     path = './data_processed/'
     with open(path+'dados_empresas.csv','w') as file:
         writer = csv.DictWriter(file, fieldnames=colunas)
         writer.writeheader()
-        writer.writerows(dados_agrupados)
+        writer.writerows(dados)
+
+def main():
+    dados_empresaA, dados_empresaB = coleta_dados()
+    dados_processados = processa_dados(dados_empresaA, dados_empresaB)
+    salva_dados(dados_processados)
 
 main()

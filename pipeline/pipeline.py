@@ -47,6 +47,6 @@ def main():
     with open(path+'dados_empresas.csv','w') as file:
         writer = csv.DictWriter(file, fieldnames=colunas)
         writer.writeheader()
-        for row in dados_agrupados:
-            writer.writerow(row)
+        writer.writerows(dados_agrupados)
+
 main()

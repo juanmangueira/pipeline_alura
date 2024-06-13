@@ -6,7 +6,7 @@ def coleta_dados():
     with open(path + 'dados_empresaA.json', 'r') as file:
         dados_empresaA = json.load(file)
     
-    dados_empresaB = []
+    dados_empresaB = [] 
     with open(path + 'dados_empresaB.csv', 'r') as file:
         spamreader = csv.DictReader(file,delimiter=',')
         for row in spamreader:

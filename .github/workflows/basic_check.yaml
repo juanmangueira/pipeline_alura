@@ -2,7 +2,8 @@ name: Basic Status Check
 on:
   pull_request:
     branches:
-      - main  # Ou outra branch protegida que você está configurando
+      - master
+      - dev # Ou outra branch protegida que você está configurando
 
 jobs:
   check:

@@ -1,1 +1,1 @@
-Este é um teste.
+Esse é um teste se as rules estão funcionando

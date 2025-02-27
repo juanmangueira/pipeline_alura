@@ -6,7 +6,11 @@ on:
 
 jobs:
   check:
+    name: basic-check
     runs-on: ubuntu-latest
     steps:
-      - name: Check Passed
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run basic check
         run: echo "Status check passed!"
